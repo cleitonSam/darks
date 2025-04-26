@@ -1,0 +1,40 @@
+/* Variáveis globais */
+:root {
+    --black: #000000;
+    --silver-light: #D9D9D9;
+    --silver-medium: #A6A6A6;
+    --silver-dark: #737373;
+    --white: #FFFFFF;
+    --accent: #C0A062;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: var(--black);
+    color: var(--silver-light);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .highlight {
+    color: var(--accent);
+    font-weight: 700;
+  }
+  
+  /* Animações */
+  @keyframes pulse {
+    0% { opacity: 0.9; }
+    100% { opacity: 1; text-shadow: 0 0 15px rgba(192, 160, 98, 0.5); }
+  }

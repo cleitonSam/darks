@@ -1,0 +1,155 @@
+.hero {
+  height: 100vh;
+  min-height: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 100px;
+  background-color: #000;
+  
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.9) 100%);
+      z-index: 1;
+    }
+  }
+  
+  .slideshow {
+    position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* Adicionando a transição de transformação */
+  filter: blur(0); /* Inicializa sem desfoque */
+  }
+
+  .slideshow.transitioning {
+    transform: scale(1.05); /* Um pequeno zoom ao entrar */
+    filter: blur(5px); /* Aplica o desfoque durante a transição */
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    font-weight: bold;
+  
+    h2 {
+      font-family: 'Anton', sans-serif;
+      font-size: 5rem;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--silver-light), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 20px;
+      letter-spacing: 5px;
+      line-height: 1;
+      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+  
+    p {
+      font-size: 1.2rem;
+      color: var(--silver-medium);
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+  }
+  
+  .btn-group {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+  }
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 45px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  
+    &-primary {
+      background: linear-gradient(135deg, var(--accent), #D4AF37);
+      color: var(--black);
+      border-radius: 3px;
+      box-shadow: 0 5px 15px rgba(192, 160, 98, 0.3);
+  
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(192, 160, 98, 0.4);
+      }
+    }
+  
+    &-outline {
+      background: transparent;
+      color: var(--silver-light);
+      border: 1px solid var(--silver-medium);
+      border-radius: 3px;
+  
+      &:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+        transform: translateY(-5px);
+      }
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .hero-content h2 {
+      font-size: 4rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero {
+      min-height: 700px;
+    }
+  
+    .hero-content {
+      h2 {
+        font-size: 3rem;
+      }
+  
+      p {
+        font-size: 1rem;
+      }
+    }
+  
+    .btn-group {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .btn {
+      width: 100%;
+      padding: 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero-content h2 {
+      font-size: 2.5rem;
+      letter-spacing: 3px;
+    }
+  }

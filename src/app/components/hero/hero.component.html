@@ -1,0 +1,15 @@
+<section class="hero" id="home">
+  <div class="slideshow" 
+  [style.background-image]="'url(' + currentSlide?.image + ')'"
+  [class.transitioning]="isTransitioning">
+</div>  
+  <div class="container">
+    <div class="hero-content">
+      <h2>{{ currentSlide?.title }}</h2>
+      <p [innerHTML]="currentSlide?.description"></p>
+      <div class="btn-group">
+        <a class="btn btn-primary">ENTRAR NO GRUPO</a>
+      </div>
+    </div>
+  </div>
+</section>

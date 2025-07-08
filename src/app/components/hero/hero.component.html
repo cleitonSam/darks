@@ -1,14 +1,20 @@
-<section class="hero" id="home">
+<section class="hero" id="home" aria-labelledby="hero-heading">
   <div class="slideshow" 
-  [style.background-image]="'url(' + currentSlide?.image + ')'"
-  [class.transitioning]="isTransitioning">
-</div>  
+       [style.background-image]="'url(' + currentSlide?.image + ')'"
+       [class.transitioning]="isTransitioning"
+       role="img"
+       [attr.aria-label]="currentSlide?.imageDescription || 'Imagem de fundo do slideshow'">
+  </div>  
   <div class="container">
     <div class="hero-content">
-      <h2>{{ currentSlide?.title }}</h2>
-      <p [innerHTML]="currentSlide?.description"></p>
+      <h1 id="hero-heading">{{ currentSlide?.title }}</h1>
+      <p [innerHTML]="currentSlide?.description" aria-live="polite"></p>
       <div class="btn-group">
-        <a class="btn btn-primary">ENTRAR NO GRUPO</a>
+        <a class="btn btn-primary" 
+           href="https://exemplo.com/grupo"
+           target="_blank"
+           aria-label="Entrar no grupo do Dark's Gym (abre em nova janela)"
+           role="button">ENTRAR NO GRUPO</a>
       </div>
     </div>
   </div>

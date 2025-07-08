@@ -1,14 +1,33 @@
-<header id="header" [class.scrolled]="isScrolled">
+<header id="header" [class.scrolled]="isScrolled" role="banner">
   <div class="container header-container">
     <div class="logo">
-      <img src="https://i.postimg.cc/6qgqqXFG/logo-DARK.jpg" alt="Dark's Gym Logo" class="logo-img">
+      <img src="https://i.postimg.cc/6qgqqXFG/logo-DARK.jpg" 
+           alt="Dark's Gym Logo - Página inicial" 
+           class="logo-img"
+           width="100" 
+           height="50">
       <h1>DARK<span class="apostrophe-s">'S</span>  <span>GYM</span></h1>
     </div>
-    <nav class="nav-links">
-      <a (click)="scrollTo('about')" class="menu-item">Sobre</a>
-      <a (click)="scrollTo('space')" class="menu-item">Espaço</a>
-      <a (click)="scrollTo('contact')" class="menu-item">Contato</a>
-      <a href="https://exemplo.com/grupo" class="btn btn-outline">ENTRAR NO GRUPO</a>
+    <nav class="nav-links" aria-label="Navegação principal">
+      <a (click)="scrollTo('about')" 
+         class="menu-item" 
+         role="button"
+         tabindex="0"
+         aria-label="Ir para seção Sobre">Sobre</a>
+      <a (click)="scrollTo('space')" 
+         class="menu-item" 
+         role="button"
+         tabindex="0"
+         aria-label="Ir para seção Espaço">Espaço</a>
+      <a (click)="scrollTo('contact')" 
+         class="menu-item" 
+         role="button"
+         tabindex="0"
+         aria-label="Ir para seção Contato">Contato</a>
+      <a href="https://exemplo.com/grupo" 
+         class="btn btn-outline" 
+         aria-label="Entrar no grupo do Dark's Gym (abre em nova janela)"
+         target="_blank">ENTRAR NO GRUPO</a>
     </nav>
   </div>
 </header>

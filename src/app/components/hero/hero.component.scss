@@ -45,7 +45,7 @@
     max-width: 800px;
     font-weight: bold;
   
-    h2 {
+    h2, h1 {
       font-family: 'Anton', sans-serif;
       font-size: 5rem;
       text-transform: uppercase;
@@ -116,7 +116,7 @@
   }
   
   @media (max-width: 1024px) {
-    .hero-content h2 {
+    .hero-content h2, h1 {
       font-size: 4rem;
     }
   }
@@ -127,7 +127,7 @@
     }
   
     .hero-content {
-      h2 {
+      h2, h1 {
         font-size: 3rem;
       }
   
@@ -148,7 +148,7 @@
   }
   
   @media (max-width: 480px) {
-    .hero-content h2 {
+    .hero-content h2, h1 {
       font-size: 2.5rem;
       letter-spacing: 3px;
     }

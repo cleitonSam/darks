@@ -1,45 +1,93 @@
-<footer id="contact">
+<footer id="contact" role="contentinfo">
   <div class="container">
     <div class="footer-container">
       <div class="footer-logo">
         <h4>DARK<span class="highlight">'S</span> <span>GYM</span></h4>
         <p>Mais que uma academia, um estilo de vida.</p>
         <div class="social-links">
-          <a href="https://www.instagram.com/darksgymsantoandre"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-whatsapp"></i></a>
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/darksgymsantoandre" 
+             aria-label="Instagram do Dark's Gym (abre em nova janela)"
+             target="_blank"
+             rel="noopener noreferrer">
+             <i class="fab fa-instagram" aria-hidden="true"></i>
+          </a>
+          <a href="#" 
+             aria-label="WhatsApp do Dark's Gym"
+             target="_blank"
+             rel="noopener noreferrer">
+             <i class="fab fa-whatsapp" aria-hidden="true"></i>
+          </a>
+          <a href="#" 
+             aria-label="Facebook do Dark's Gym (abre em nova janela)"
+             target="_blank"
+             rel="noopener noreferrer">
+             <i class="fab fa-facebook-f" aria-hidden="true"></i>
+          </a>
+          <a href="#" 
+             aria-label="YouTube do Dark's Gym (abre em nova janela)"
+             target="_blank"
+             rel="noopener noreferrer">
+             <i class="fab fa-youtube" aria-hidden="true"></i>
+          </a>
         </div>
       </div>
       
       <div class="footer-links">
-        <h5>Links</h5>
-        <ul>
-          <li><a (click)="scrollTo('about')">Sobre Nós</a></li>
-          <li><a (click)="scrollTo('space')">Nosso Espaço</a></li>
-          <li><a (click)="scrollTo('contact')">Contato</a></li>
+        <h5 id="links-heading">Links</h5>
+        <ul aria-labelledby="links-heading">
+          <li><a (click)="scrollTo('about')" 
+                 role="button"
+                 tabindex="0"
+                 aria-label="Ir para seção Sobre Nós">Sobre Nós</a></li>
+          <li><a (click)="scrollTo('space')" 
+                 role="button"
+                 tabindex="0"
+                 aria-label="Ir para seção Nosso Espaço">Nosso Espaço</a></li>
+          <li><a (click)="scrollTo('contact')" 
+                 role="button"
+                 tabindex="0"
+                 aria-label="Ir para seção Contato">Contato</a></li>
         </ul>
       </div>
       
       <div class="footer-links">
-        <h5>Horários</h5>
-          <ul>
-            <li><a href="#">Aberto 24h, todos os dias</a></li>
-          </ul>
+        <h5 id="hours-heading">Horários</h5>
+        <ul aria-labelledby="hours-heading">
+          <li><span>Aberto 24h, todos os dias</span></li>
+        </ul>
       </div>
       
       <div class="footer-links">
-        <h5>Contato</h5>
-        <ul>
-          <li><a href="#">Av. Martim Francisco, 786 - Vila Alto de Santo André, Santo André, SP, 09230-700</a></li>
-          <li><a href="mailto:contato@darksgym.com"></a></li>
-          <li><a href="https://www.instagram.com/darksgymsantoandre">Trabalhe Conosco</a></li>
+        <h5 id="contact-heading">Contato</h5>
+        <ul aria-labelledby="contact-heading">
+          <li>
+            <a href="https://maps.google.com/?q=Av. Martim Francisco, 786 - Vila Alto de Santo André, Santo André, SP, 09230-700"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Ver no mapa: Av. Martim Francisco, 786 - Vila Alto de Santo André, Santo André, SP">
+               Av. Martim Francisco, 786 - Vila Alto de Santo André, Santo André, SP, 09230-700
+            </a>
+          </li>
+          <li>
+            <a href="mailto:contato@darksgym.com"
+               aria-label="Enviar e-mail para contato@darksgym.com">
+               
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/darksgymsantoandre"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Trabalhe Conosco (abre Instagram em nova janela)">
+               Trabalhe Conosco
+            </a>
+          </li>
         </ul>
       </div>
     </div>
     
     <div class="copyright">
-      © 2024 DARK'S GYM. Todos os direitos reservados. | Desenvolvido com ❤️ para atletas de elite
+      © 2025 DARK'S GYM. Todos os direitos reservados. | Desenvolvido com <span aria-label="amor">❤️</span> para atletas de elite
     </div>
   </div>
 </footer>

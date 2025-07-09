@@ -6,10 +6,11 @@ import { HighlightsComponent } from './components/highlights/highlights.componen
 import { NewsletterComponent } from './components/newsletter/newsletter.component';
 import { PremiumSpaceComponent } from './components/premium-space/premium-space.component';
 import { SlideshowService } from './service/slideshow.service';
+import { SupplementComponent } from './components/supplement/supplement.component';
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, HeroComponent, HighlightsComponent, PremiumSpaceComponent, NewsletterComponent, FooterComponent],
+  imports: [HeaderComponent, HeroComponent, HighlightsComponent, PremiumSpaceComponent, NewsletterComponent, FooterComponent, SupplementComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   providers: [SlideshowService],

@@ -22,7 +22,7 @@ export class PremiumSpaceComponent implements AfterViewInit, OnDestroy {
       "@context": "https://schema.org",
       "@type": "SportsActivityLocation",
       "name": "Dark's Gym Espaço Premium",
-      "description": "Área de 2000m² com equipamentos de última geração em Santo André",
+      "description": "Área de 2400m² com equipamentos de última geração em Santo André",
       "image": "https://i.postimg.cc/d0px5SMj/Whats-App-Image-2025-03-06-at-15-39-11-2.jpg",
       "address": {
         "@type": "PostalAddress",
@@ -47,12 +47,12 @@ export class PremiumSpaceComponent implements AfterViewInit, OnDestroy {
   }
 
   private setMetaTags() {
-    this.title.setTitle('Espaço Premium - Dark\'s Gym Santo André | 2000m² de Área');
+    this.title.setTitle('Espaço Premium - Dark\'s Gym Santo André | 2800m² de Área');
     this.meta.addTags([
-      { name: 'description', content: 'Conheça nosso espaço premium de 2000m² em Santo André com equipamentos importados, áreas exclusivas e ambiente climatizado 24 horas.' },
+      { name: 'description', content: 'Conheça nosso espaço premium de 2800m² em Santo André com equipamentos importados, áreas exclusivas e ambiente climatizado 24 horas.' },
       { name: 'keywords', content: 'academia premium santo andré, espaço fitness, academia 24h, dark\'s gym estrutura' },
       { property: 'og:title', content: 'Espaço Premium Dark\'s Gym - A Melhor Estrutura de Santo André' },
-      { property: 'og:description', content: '2000m² de área com os melhores equipamentos para seu treino' },
+      { property: 'og:description', content: '2800m² de área com os melhores equipamentos para seu treino' },
       { property: 'og:type', content: 'website' },
       { property: 'og:image', content: 'https://i.postimg.cc/d0px5SMj/Whats-App-Image-2025-03-06-at-15-39-11-2.jpg' },
       { property: 'og:url', content: this.router.url },

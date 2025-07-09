@@ -67,7 +67,7 @@ export class HeaderComponent implements OnInit {
       },
       '/space': {
         title: 'Espaço Premium - Dark\'s Gym Santo André',
-        description: 'Mais de 2000m² de área premium com os melhores equipamentos para seu treino'
+        description: 'Mais de 2400m² de área premium com os melhores equipamentos para seu treino'
       },
       '/contact': {
         title: 'Contato - Dark\'s Gym Santo André',
@@ -119,7 +119,7 @@ export class HeaderComponent implements OnInit {
       },
       'space': {
         title: 'Nosso Espaço Premium - Dark\'s Gym',
-        description: 'Fotos e detalhes da nossa estrutura de 2000m² com equipamentos de última geração'
+        description: 'Fotos e detalhes da nossa estrutura de 2400m² com equipamentos de última geração'
       },
       'contact': {
         title: 'Fale Conosco - Dark\'s Gym Santo André',

@@ -10,7 +10,7 @@ export class SlideshowService {
     { 
       image: 'https://i.postimg.cc/tTbhRhFH/Whats-App-Image-2025-03-06-at-15-39-12-1.jpg',
       title: 'ELITE PERFORMANCE',
-      description: 'Prepare-se para a inauguração da academia mais exclusiva da cidade. <span class="highlight">Mais de 2.000m²</span> de área premium dedicados ao seu alto desempenho.'
+      description: 'Prepare-se para a inauguração da academia mais exclusiva da cidade. <span class="highlight">Mais de 2.400m²</span> de área premium dedicados ao seu alto desempenho.'
     },
     { 
       image: 'https://i.postimg.cc/1tKD8fKV/Whats-App-Image-2025-03-06-at-15-39-12-2.jpg',

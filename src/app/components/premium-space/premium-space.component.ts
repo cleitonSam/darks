@@ -11,19 +11,51 @@ export class PremiumSpaceComponent implements AfterViewInit, OnDestroy {
   currentSlide: number = 0;
   slides: HTMLElement[] = [];
   slideshowInterval: any;
-  structuredData: any;
 
   constructor(
     private meta: Meta,
     private title: Title,
     private router: Router
-  ) {
-    this.structuredData = {
+  ) {}
+
+  ngAfterViewInit() {
+    this.setMetaTags();
+    this.setStructuredData();
+    this.initSlideshow();
+  }
+
+  ngOnDestroy() {
+    this.clearSlideshowInterval();
+  }
+
+  // 🎯 SEO inicial para rota /espaco-premium
+  private setMetaTags() {
+    this.title.setTitle('Espaço Premium - Dark\'s Gym Santo André | Academia 2800m²');
+    this.meta.addTags([
+      { name: 'description', content: 'Conheça o espaço premium da Dark\'s Gym em Santo André: 2800m² de equipamentos modernos, áreas climatizadas e estrutura de alto padrão.' },
+      { name: 'keywords', content: 'academia premium santo andré, dark gym estrutura, espaço fitness, academia com crossfit, darksgym' },
+      { property: 'og:title', content: 'Espaço Premium Dark\'s Gym - Academia em Santo André' },
+      { property: 'og:description', content: 'Academia com 2800m², estrutura climatizada e os melhores equipamentos de treino em Santo André.' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:image', content: 'https://i.postimg.cc/d0px5SMj/Whats-App-Image-2025-03-06-at-15-39-11-2.jpg' },
+      { property: 'og:url', content: `https://www.darksgym.com.br${this.router.url}` },
+      { name: 'robots', content: 'index, follow' }
+    ]);
+  }
+
+  // 🧠 Structured Data para SEO local e resultados enriquecidos
+  private setStructuredData() {
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "SportsActivityLocation",
-      "name": "Dark's Gym Espaço Premium",
-      "description": "Área de 2400m² com equipamentos de última geração em Santo André",
+      "@type": "HealthClub",
+      "name": "Dark's Gym - Espaço Premium",
+      "description": "Espaço premium com 2800m² de estrutura completa, climatização 24h, equipamentos de última geração e áreas funcionais.",
       "image": "https://i.postimg.cc/d0px5SMj/Whats-App-Image-2025-03-06-at-15-39-11-2.jpg",
+      "@id": "https://www.darksgym.com.br/espaco-premium",
+      "url": "https://www.darksgym.com.br/espaco-premium",
+      "telephone": "+55-11-99999-9999",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Av. Martim Francisco, 786",
@@ -32,38 +64,15 @@ export class PremiumSpaceComponent implements AfterViewInit, OnDestroy {
         "postalCode": "09230-700",
         "addressCountry": "BR"
       },
-      "openingHours": "Mo-Su 00:00-23:59",
-      "url": "https://www.darksgym.com.br/espaco-premium"
-    };
+      "openingHours": "Mo-Su 00:00-23:59"
+    });
+    document.head.appendChild(script);
   }
 
-  ngAfterViewInit() {
-    this.setMetaTags();
-    this.initSlideshow();
-  }
-
-  ngOnDestroy() {
-    this.clearSlideshowInterval();
-  }
-
-  private setMetaTags() {
-    this.title.setTitle('Espaço Premium - Dark\'s Gym Santo André | 2800m² de Área');
-    this.meta.addTags([
-      { name: 'description', content: 'Conheça nosso espaço premium de 2800m² em Santo André com equipamentos importados, áreas exclusivas e ambiente climatizado 24 horas.' },
-      { name: 'keywords', content: 'academia premium santo andré, espaço fitness, academia 24h, dark\'s gym estrutura' },
-      { property: 'og:title', content: 'Espaço Premium Dark\'s Gym - A Melhor Estrutura de Santo André' },
-      { property: 'og:description', content: '2800m² de área com os melhores equipamentos para seu treino' },
-      { property: 'og:type', content: 'website' },
-      { property: 'og:image', content: 'https://i.postimg.cc/d0px5SMj/Whats-App-Image-2025-03-06-at-15-39-11-2.jpg' },
-      { property: 'og:url', content: this.router.url },
-      { name: 'robots', content: 'index, follow' }
-    ]);
-  }
-
+  // 🎞️ Inicia o slideshow com acessibilidade
   private initSlideshow() {
     this.slides = Array.from(document.querySelectorAll('.image-slide')) as HTMLElement[];
-    
-    // Inicialmente esconde todos os slides exceto o primeiro
+
     this.slides.forEach((slide, index) => {
       slide.style.opacity = index === 0 ? '1' : '0';
       slide.setAttribute('role', 'img');
@@ -85,6 +94,13 @@ export class PremiumSpaceComponent implements AfterViewInit, OnDestroy {
     return descriptions[index] || 'Imagem do espaço premium da academia';
   }
 
+  private updateMetaForCurrentSlide() {
+    const currentImage = this.slides[this.currentSlide].style.backgroundImage
+      .replace('url("', '').replace('")', '');
+    this.meta.updateTag({ property: 'og:image', content: currentImage });
+  }
+
+  // 🎮 Controle de slides
   startSlideshow() {
     this.clearSlideshowInterval();
     this.slideshowInterval = setInterval(() => {
@@ -99,29 +115,18 @@ export class PremiumSpaceComponent implements AfterViewInit, OnDestroy {
   }
 
   changeSlide() {
-    // Esconde o slide atual
     this.slides[this.currentSlide].style.opacity = '0';
     this.slides[this.currentSlide].setAttribute('aria-hidden', 'true');
 
-    // Atualiza para o próximo slide
     this.currentSlide = (this.currentSlide + 1) % this.slides.length;
 
-    // Mostra o novo slide
     this.slides[this.currentSlide].style.opacity = '1';
     this.slides[this.currentSlide].setAttribute('aria-hidden', 'false');
 
-    // Atualiza meta tags para a imagem atual
     this.updateMetaForCurrentSlide();
   }
 
-  private updateMetaForCurrentSlide() {
-    const currentImage = this.slides[this.currentSlide].style.backgroundImage
-      .replace('url("', '').replace('")', '');
-    
-    this.meta.updateTag({ property: 'og:image', content: currentImage });
-  }
-
-  // Método para navegação acessível por teclado
+  // ⌨️ Navegação por teclado
   handleKeydown(event: KeyboardEvent) {
     if (event.key === 'ArrowLeft') {
       this.prevSlide();
@@ -136,12 +141,13 @@ export class PremiumSpaceComponent implements AfterViewInit, OnDestroy {
     this.clearSlideshowInterval();
     this.slides[this.currentSlide].style.opacity = '0';
     this.slides[this.currentSlide].setAttribute('aria-hidden', 'true');
-    
+
     this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
-    
+
     this.slides[this.currentSlide].style.opacity = '1';
     this.slides[this.currentSlide].setAttribute('aria-hidden', 'false');
-    
+
+    this.updateMetaForCurrentSlide();
     this.startSlideshow();
   }
 

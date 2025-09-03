@@ -30,12 +30,12 @@ export class PremiumSpaceComponent implements AfterViewInit, OnDestroy {
 
   // 🎯 SEO inicial para rota /espaco-premium
   private setMetaTags() {
-    this.title.setTitle('Espaço Premium - Dark\'s Gym Santo André | Academia 2800m²');
+    this.title.setTitle('Espaço Premium - Dark\'s Gym Santo André | Academia 2400m²');
     this.meta.addTags([
-      { name: 'description', content: 'Conheça o espaço premium da Dark\'s Gym em Santo André: 2800m² de equipamentos modernos, áreas climatizadas e estrutura de alto padrão.' },
+      { name: 'description', content: 'Conheça o espaço premium da Dark\'s Gym em Santo André: 2400m² de equipamentos modernos, áreas climatizadas e estrutura de alto padrão.' },
       { name: 'keywords', content: 'academia premium santo andré, dark gym estrutura, espaço fitness, academia com crossfit, darksgym' },
       { property: 'og:title', content: 'Espaço Premium Dark\'s Gym - Academia em Santo André' },
-      { property: 'og:description', content: 'Academia com 2800m², estrutura climatizada e os melhores equipamentos de treino em Santo André.' },
+      { property: 'og:description', content: 'Academia com 2400m², estrutura climatizada e os melhores equipamentos de treino em Santo André.' },
       { property: 'og:type', content: 'website' },
       { property: 'og:image', content: 'https://i.postimg.cc/d0px5SMj/Whats-App-Image-2025-03-06-at-15-39-11-2.jpg' },
       { property: 'og:url', content: `https://www.darksgym.com.br${this.router.url}` },
@@ -51,7 +51,7 @@ export class PremiumSpaceComponent implements AfterViewInit, OnDestroy {
       "@context": "https://schema.org",
       "@type": "HealthClub",
       "name": "Dark's Gym - Espaço Premium",
-      "description": "Espaço premium com 2800m² de estrutura completa, climatização 24h, equipamentos de última geração e áreas funcionais.",
+      "description": "Espaço premium com 2400m² de estrutura completa, climatização 24h, equipamentos de última geração e áreas funcionais.",
       "image": "https://i.postimg.cc/d0px5SMj/Whats-App-Image-2025-03-06-at-15-39-11-2.jpg",
       "@id": "https://www.darksgym.com.br/espaco-premium",
       "url": "https://www.darksgym.com.br/espaco-premium",

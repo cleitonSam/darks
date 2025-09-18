@@ -2,29 +2,31 @@
   <div class="container">
     <div class="space-container">
       <div class="space-images" role="region" aria-label="Galeria de imagens do espaço premium">
-        <!-- Imagens com descrições acessíveis -->
-        <div class="image-slide" 
-             style="background-image: url('https://raw.githubusercontent.com/fluxodigitaltech/img-darks/refs/heads/main/%40leafar_photographer-23.jpg')"
+        <div *ngFor="let slide of slidesData; let i = index"
+             class="image-slide"
+             [style.backgroundImage]="'url(' + slide.url + ')'"
+             [class.active]="currentSlide === i"
              role="img"
-             aria-label="Área de musculação com equipamentos modernos"></div>
-        <div class="image-slide" 
-             style="background-image: url('https://i.postimg.cc/0NVkWSPC/Whats-App-Image-2025-03-06-at-15-39-12.jpg')"
-             role="img"
-             aria-label="Sala de spinning com bicicletas profissionais"></div>
-        <div class="image-slide" 
-             style="background-image: url('https://i.postimg.cc/QtVXRMMZ/Whats-App-Image-2025-03-06-at-15-39-13.jpg')"
-             role="img"
-             aria-label="Área de crossfit com equipamentos diversificados"></div>
-        <div class="image-slide" 
-             style="background-image: url('https://i.postimg.cc/Sx7N95P3/Whats-App-Image-2025-03-06-at-15-39-13-1-1.jpg')"
-             role="img"
-             aria-label="Vista geral da academia mostrando amplitude do espaço"></div>
-        <div class="image-slide" 
-             style="background-image: url('https://i.postimg.cc/bvyY9gcJ/Whats-App-Image-2025-03-06-at-15-39-13-3.jpg')"
-             role="img"
-             aria-label="Área de lutas com tatame profissional"></div>
+             [attr.aria-label]="slide.description"
+             [attr.aria-hidden]="currentSlide !== i">
+        </div>
+
+        <button class="nav-btn prev-btn" (click)="prevSlide()" aria-label="Voltar slide">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="nav-btn next-btn" (click)="nextSlide()" aria-label="Avançar slide">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <div class="slide-dots" role="group" aria-label="Indicadores de slide">
+          <span *ngFor="let slide of slidesData; let i = index"
+                class="dot"
+                [class.active]="currentSlide === i"
+                (click)="goToSlide(i)"
+                [attr.aria-label]="'Ir para slide ' + (i + 1)"></span>
+        </div>
       </div>
-      
+
       <div class="space-content">
         <h3 id="premium-space-heading">ESPAÇO <span class="highlight">PREMIUM</span></h3>
         <p>Nossos mais de 2.400m² foram meticulosamente projetados para oferecer a melhor experiência em treinamento físico. Cada área foi pensada para maximizar seus resultados.</p>
@@ -37,7 +39,7 @@
           </div>
           <div class="stat-item" role="listitem">
             <div class="stat-number" aria-hidden="true">+12</div>
-            <div class="stat-label">Marcas de Equipamentos Importados <span class="sr-only">Mais de oito áreas exclusivas</span></div>
+            <div class="stat-label">Marcas de Equipamentos Importados <span class="sr-only">Mais de doze marcas de equipamentos importados</span></div>
           </div>
           <div class="stat-item" role="listitem">
             <div class="stat-number" aria-hidden="true">24/7</div>

@@ -1,38 +1,70 @@
 <header id="header" [class.scrolled]="isScrolled" role="banner">
   <div class="container header-container">
     <div class="logo">
-      <img src="https://raw.githubusercontent.com/fluxodigitaltech/img-darks/refs/heads/main/logo_DARK.jpeg" 
-           alt="Dark's Gym Logo - Página inicial" 
+      <img src="https://raw.githubusercontent.com/fluxodigitaltech/img-darks/refs/heads/main/logo_DARK.jpeg"
+           alt="Dark's Gym Logo - Página inicial"
            class="logo-img"
-           width="100" 
+           width="100"
            height="50">
       <h1>DARK<span class="apostrophe-s">'S</span>  <span>GYM</span></h1>
     </div>
+
+    <button class="hamburger" (click)="toggleMobileMenu()" aria-label="Abrir menu de navegação">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
     <nav class="nav-links" aria-label="Navegação principal">
-      <a (click)="scrollTo('sobre')" 
-         class="menu-item" 
+      <a (click)="scrollTo('sobre')"
+         class="menu-item"
          role="button"
          tabindex="0"
          aria-label="Ir para seção Sobre">Sobre</a>
-         <a (click)="scrollTo('suplementos')" 
-         class="menu-item" 
+      <a (click)="scrollTo('planos')"
+         class="menu-item"
          role="button"
          tabindex="0"
-         aria-label="Ir para seção Suplemento">Suplemento</a>
-      <a (click)="scrollTo('espaco')" 
-         class="menu-item" 
+         aria-label="Ir para seção Planos">Planos</a>
+      <a (click)="scrollTo('roupas')"
+         class="menu-item"
+         role="button"
+         tabindex="0"
+         aria-label="Ir para seção Roupas">Roupas</a>
+      <a (click)="scrollTo('suplementos')"
+         class="menu-item"
+         role="button"
+         tabindex="0"
+         aria-label="Ir para seção Suplemento">Suplementos</a>
+      <a (click)="scrollTo('espaco')"
+         class="menu-item"
          role="button"
          tabindex="0"
          aria-label="Ir para seção Espaço">Espaço</a>
-      <a (click)="scrollTo('equipamentos')" 
-         class="menu-item" 
+      <a (click)="scrollTo('equipamentos')"
+         class="menu-item"
          role="button"
          tabindex="0"
-         aria-label="Ir para seção Contato">Equipamentos</a>
+         aria-label="Ir para seção Equipamentos">Equipamentos</a>
       <a href="https://evo-totem.w12app.com.br/darksgym/1/site/QhXXzoY7OMy%5BPLUS%5DFpULG15Wrw%5BEQUAL%5D%5BEQUAL%5D"
-         class="btn btn-outline" 
-         aria-label="Entrar no grupo do Dark's Gym (abre em nova janela)"
+         class="btn btn-outline"
+         aria-label="Compre agora (abre em nova janela)"
          target="_blank">COMPRE AGORA</a>
     </nav>
   </div>
 </header>
+
+<div class="mobile-menu" [class.open]="isMobileMenuOpen">
+    <div class="close-btn" (click)="toggleMobileMenu()">&times;</div>
+    <nav class="mobile-nav-links" aria-label="Navegação do menu mobile">
+        <a (click)="scrollToAndClose('sobre')" class="mobile-menu-item">Sobre</a>
+        <a (click)="scrollToAndClose('planos')" class="mobile-menu-item">Planos</a>
+        <a (click)="scrollToAndClose('roupas')" class="mobile-menu-item">Roupas</a>
+        <a (click)="scrollToAndClose('suplementos')" class="mobile-menu-item">Suplementos</a>
+        <a (click)="scrollToAndClose('espaco')" class="mobile-menu-item">Espaço</a>
+        <a (click)="scrollToAndClose('equipamentos')" class="mobile-menu-item">Equipamentos</a>
+        <a href="https://evo-totem.w12app.com.br/darksgym/1/site/QhXXzoY7OMy%5BPLUS%5DFpULG15Wrw%5BEQUAL%5D%5BEQUAL%5D"
+           class="btn btn-outline mobile-menu-btn"
+           target="_blank">COMPRE AGORA</a>
+    </nav>
+</div>

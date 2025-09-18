@@ -1,3 +1,4 @@
+/* Defina as variáveis de cor e fonte no topo do seu arquivo CSS */
 :root {
   /* Paleta de Cores */
   --black-dark: #000000;
@@ -5,16 +6,16 @@
   --silver-light: #cccccc;
   --silver-medium: #b0b0b0;
   --silver-dark: #a9a9a9;
-  --accent: #ff4500;
+  --accent: #ff4500; /* Cor de destaque */
   --accent-shadow: rgba(255, 69, 0, 0.4);
 
   /* Fontes */
   --font-anton: 'Anton', sans-serif;
-  --font-poppins: 'Poppins', sans-serif;
+  --font-poppins: 'Poppins', sans-serif; /* Poppins para o corpo do texto */
   --font-body: 'Poppins', sans-serif;
 }
 
-/* --- Estilos Globais e do Corpo (Body) --- */
+/* Estilos Globais */
 body {
   font-family: var(--font-body);
   color: var(--silver-medium);
@@ -27,19 +28,18 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-anton);
+  font-family: var(--font-anton); /* Usando Anton para todos os títulos */
   color: var(--silver-light);
   text-transform: uppercase;
   margin-top: 0;
 }
 
 section {
-  padding: 80px 0;
+  padding: 40px 0;
   background: linear-gradient(to bottom, var(--black-medium), var(--black-dark));
   position: relative;
 }
 
-/* Linha de separação entre as seções */
 section::before {
   content: '';
   position: absolute;
@@ -62,6 +62,7 @@ section::before {
 }
 
 .section-title h2 {
+  font-family: var(--font-anton); /* Aplicando a fonte Anton */
   font-size: 3rem;
   background: linear-gradient(90deg, var(--silver-dark), var(--silver-light), var(--silver-dark));
   -webkit-background-clip: text;
@@ -73,23 +74,48 @@ section::before {
 }
 
 .section-title p {
+  font-family: var(--font-poppins); /* Aplicando a fonte Poppins */
   max-width: 700px;
   margin: 0 auto;
   font-size: 1.1rem;
   color: var(--silver-medium);
 }
 
-/* --- Seção de Galeria --- */
+/* --- Galeria de Fotos (Corrigido) --- */
 .modern-gallery {
   padding: 100px 0;
   background: linear-gradient(to bottom, rgba(0,0,0,0.95), rgba(0,0,0,1));
   position: relative;
+  text-align: center;
+}
+
+.modern-gallery .section-title {
+  margin-bottom: 50px;
+}
+
+.modern-gallery .section-title h2 {
+  font-family: var(--font-anton); /* Usando a variável */
+  font-size: 3.5rem; /* Ajustei para o tamanho que você enviou */
+  background: linear-gradient(90deg, #A9A9A9, #CCCCCC, #A9A9A9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  letter-spacing: 4px;
+}
+
+.modern-gallery .section-title p {
+  font-family: var(--font-poppins); /* Usando a variável */
+  color: #B0B0B0;
+  font-size: 1.1rem;
 }
 
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .gallery-item {
@@ -156,6 +182,7 @@ section::before {
 }
 
 .view-text {
+  font-family: var(--font-poppins); /* Usando a variável */
   color: white;
   font-size: 1.2rem;
   font-weight: bold;
@@ -171,7 +198,7 @@ section::before {
   opacity: 1;
 }
 
-/* --- Modal da Galeria (Fullscreen) --- */
+/* --- Image Modal (Fullscreen) --- */
 .image-modal {
   display: none;
   position: fixed;
@@ -213,6 +240,7 @@ section::before {
 }
 
 .modal-caption {
+  font-family: var(--font-poppins); /* Usando a variável */
   color: var(--silver-light);
   font-size: 1.2rem;
   padding: 15px 0;
@@ -255,7 +283,7 @@ section::before {
 
 /* --- Seção de Destaques (Highlights) --- */
 .highlights {
-  padding: 40px 0;
+  padding: 100px 0;
   background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,1));
   position: relative;
 }
@@ -299,7 +327,7 @@ section::before {
 }
 
 .feature-card h4 {
-  font-family: var(--font-anton);
+  font-family: var(--font-anton); /* Usando a variável */
   font-size: 1.3rem;
   text-transform: uppercase;
   color: var(--silver-light);
@@ -308,6 +336,7 @@ section::before {
 }
 
 .feature-card p {
+  font-family: var(--font-poppins); /* Usando a variável */
   font-size: 1rem;
   color: var(--silver-medium);
   margin-bottom: 0;
@@ -321,19 +350,8 @@ section::before {
 
 /* --- Seção de Planos --- */
 .plans {
-  padding: 40px 0;
+  padding: 100px 0;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 1));
-  position: relative;
-}
-
-.plans::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--silver-dark), transparent);
 }
 
 .plans-grid {
@@ -385,7 +403,7 @@ section::before {
 }
 
 .plan-title {
-  font-family: var(--font-anton);
+  font-family: var(--font-anton); /* Usando a variável */
   font-size: 1.5rem;
   text-transform: uppercase;
   color: var(--silver-light);
@@ -394,7 +412,7 @@ section::before {
 }
 
 .plan-price {
-  font-family: var(--font-anton);
+  font-family: var(--font-anton); /* Usando a variável */
   font-size: 2.5rem;
   font-weight: bold;
   background: linear-gradient(135deg, var(--silver-light), var(--silver-dark));
@@ -436,6 +454,7 @@ section::before {
 }
 
 .plan-features li span {
+  font-family: var(--font-poppins); /* Usando a variável */
   font-size: 0.9rem;
 }
 
@@ -443,7 +462,7 @@ section::before {
   display: inline-block;
   background: var(--accent);
   color: #fff;
-  font-family: var(--font-poppins);
+  font-family: var(--font-poppins); /* Usando a variável */
   font-weight: 600;
   text-transform: uppercase;
   padding: 12px 25px;
@@ -460,57 +479,183 @@ section::before {
 }
 
 /* --- Responsividade (Media Queries) --- */
-@media (max-width: 768px) {
-  section {
-    padding: 60px 0;
+@media (max-width: 992px) {
+  .modern-gallery .section-title h2 {
+    font-size: 3rem;
   }
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  .close-button {
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    width: 40px;
+    height: 40px;
+  }
+}
 
-  .section-title {
-    margin-bottom: 40px;
+@media (max-width: 768px) {
+  .modern-gallery {
+    padding: 80px 0;
+  }
+  .modern-gallery .section-title h2 {
+    font-size: 2.5rem;
+  }
+  .modern-gallery .section-title p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .modern-gallery .section-title h2 {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+  .close-button {
+    top: 5px;
+    right: 10px;
+    font-size: 24px;
+    width: 35px;
+    height: 35px;
+  }
+}
+
+.highlights {
+  padding: 50px 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,1));
+  position: relative;
+}
+
+.highlights::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--silver-dark), transparent);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-title h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: 3rem;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--silver-light), var(--silver-dark));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+}
+
+.section-title p {
+  max-width: 700px;
+  margin: 0 auto;
+  color: var(--silver-medium);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.feature-card {
+  background: rgba(30, 30, 30, 0.5);
+  border: 1px solid rgba(169, 169, 169, 0.1);
+  padding: 40px 30px;
+  border-radius: 5px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--accent);
+    transition: height 0.4s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(169, 169, 169, 0.2);
+}
+
+.feature-card:hover::before {
+  height: 100%;
+}
+
+.feature-card h4 {
+  font-family: 'Anton', sans-serif;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  color: var(--silver-light);
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.feature-card p {
+  color: var(--silver-medium);
+  margin-bottom: 20px;
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .highlights {
+    padding: 80px 0;
   }
 
   .section-title h2 {
-    font-size: 2.2rem;
-    letter-spacing: 2px;
+    font-size: 2.5rem;
   }
 
-  .section-title p {
-    font-size: 0.9rem;
-  }
-  
-  .gallery-grid, .features-grid, .plans-grid {
-    grid-template-columns: 1fr;
+  .features-grid {
     gap: 20px;
-  }
-
-  .feature-card, .plan-card {
-    padding: 25px 15px;
-  }
-
-  .feature-card h4, .plan-title {
-    font-size: 1.2rem;
-  }
-
-  .plan-price {
-    font-size: 2rem;
-  }
-
-  .plan-price .period {
-    font-size: 0.8rem;
-  }
-
-  .plan-features li {
-    font-size: 0.9rem;
-  }
-
-  .btn-select-plan {
-    padding: 10px 20px;
-    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
   .section-title h2 {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
+}
+
+.product-image {
+    height: 200px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 4px;
+    position: relative;
+}
+  
+.product-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.4s ease;
 }

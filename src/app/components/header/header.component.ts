@@ -13,6 +13,7 @@ import { filter } from 'rxjs/operators';
 export class HeaderComponent implements OnInit {
   isScrolled = false;
   currentRoute = '';
+  isMobileMenuOpen = false;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -99,19 +100,13 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  scrollTo(section: string) {
+ scrollTo(section: string) {
     if (isPlatformBrowser(this.platformId)) {
       const element = document.getElementById(section);
       if (element) {
-        // Atualiza a URL sem recarregar a página
         this.router.navigate([], { fragment: section });
-        
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-        // Atualiza meta tags para a seção
         this.updateMetaForSection(section);
-
-        // Atualiza classe active dos links
         this.updateActiveLink(section);
       }
     }
@@ -158,4 +153,21 @@ private getSectionMeta(section: string): { title: string; description: string } 
       activeLink.classList.add('active');
     }
   }
+ 
+
+  // Novo método para abrir/fechar o menu mobile
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.style.overflow = this.isMobileMenuOpen ? 'hidden' : 'auto';
+    }
+  }
+
+  // Novo método para rolar e fechar o menu mobile
+  scrollToAndClose(section: string) {
+    this.scrollTo(section);
+    this.toggleMobileMenu();
+  }
+
+ 
 }

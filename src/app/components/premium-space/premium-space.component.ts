@@ -1,16 +1,30 @@
+import { NgFor } from '@angular/common';
 import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-premium-space',
+   standalone: true,
+  imports: [NgFor],
   templateUrl: './premium-space.component.html',
   styleUrls: ['./premium-space.component.scss']
 })
 export class PremiumSpaceComponent implements AfterViewInit, OnDestroy {
+  // Índice do slide atualmente visível
   currentSlide: number = 0;
-  slides: HTMLElement[] = [];
+  // Variável para controlar o intervalo do slideshow
   slideshowInterval: any;
+
+  // Array de dados com as informações de cada slide
+  slidesData = [
+    { url: 'https://raw.githubusercontent.com/fluxodigitaltech/img-darks2/refs/heads/main/DSC01457.jpg', description: 'Área de musculação com equipamentos modernos' },
+    { url: 'https://raw.githubusercontent.com/fluxodigitaltech/img-darks2/refs/heads/main/DSC01476.jpg', description: 'Sala de spinning com bicicletas profissionais' },
+    { url: 'https://raw.githubusercontent.com/fluxodigitaltech/img-darks/refs/heads/main/DSC01472.jpg', description: 'Área de crossfit com equipamentos diversificados' },
+    { url: 'https://raw.githubusercontent.com/fluxodigitaltech/img-darks2/refs/heads/main/DSC01486.jpg', description: 'Vista geral da academia mostrando amplitude do espaço' },
+    { url: 'https://raw.githubusercontent.com/fluxodigitaltech/img-darks2/refs/heads/main/DSC01494.jpg', description: 'Área de lutas com tatame profissional' },
+    { url: 'https://raw.githubusercontent.com/fluxodigitaltech/img-darks2/refs/heads/main/DSC01507.jpg', description: 'Área de lutas com tatame profissional' }
+  ];
 
   constructor(
     private meta: Meta,
@@ -18,150 +32,87 @@ export class PremiumSpaceComponent implements AfterViewInit, OnDestroy {
     private router: Router
   ) {}
 
-  ngAfterViewInit() {
+  /**
+   * Ciclo de vida: executado após a inicialização da view.
+   * Define meta tags e inicia o slideshow.
+   */
+  ngAfterViewInit(): void {
     this.setMetaTags();
-    this.setStructuredData();
-    this.initSlideshow();
+    this.startSlideshow();
   }
 
-  ngOnDestroy() {
+  /**
+   * Ciclo de vida: executado antes do componente ser destruído.
+   * Limpa o intervalo do slideshow para evitar vazamento de memória.
+   */
+  ngOnDestroy(): void {
     this.clearSlideshowInterval();
   }
 
-  // 🎯 SEO inicial para rota /espaco-premium
-  private setMetaTags() {
-    this.title.setTitle('Espaço Premium - Dark\'s Gym Santo André | Academia 2400m²');
+  /**
+   * Define as meta tags para a rota, melhorando o SEO.
+   */
+  private setMetaTags(): void {
+    const metaTitle = 'Espaço Premium - Dark\'s Gym Santo André | Academia 2400m²';
+    const metaDescription = 'Conheça o espaço premium da Dark\'s Gym em Santo André: 2400m² de equipamentos modernos, áreas climatizadas e estrutura de alto padrão.';
+    const metaKeywords = 'academia premium santo andré, dark gym estrutura, espaço fitness, academia com crossfit, darksgym';
+    
+    this.title.setTitle(metaTitle);
     this.meta.addTags([
-      { name: 'description', content: 'Conheça o espaço premium da Dark\'s Gym em Santo André: 2400m² de equipamentos modernos, áreas climatizadas e estrutura de alto padrão.' },
-      { name: 'keywords', content: 'academia premium santo andré, dark gym estrutura, espaço fitness, academia com crossfit, darksgym' },
-      { property: 'og:title', content: 'Espaço Premium Dark\'s Gym - Academia em Santo André' },
-      { property: 'og:description', content: 'Academia com 2400m², estrutura climatizada e os melhores equipamentos de treino em Santo André.' },
+      { name: 'description', content: metaDescription },
+      { name: 'keywords', content: metaKeywords },
+      { property: 'og:title', content: metaTitle },
+      { property: 'og:description', content: metaDescription },
       { property: 'og:type', content: 'website' },
-      { property: 'og:image', content: 'https://i.postimg.cc/d0px5SMj/Whats-App-Image-2025-03-06-at-15-39-11-2.jpg' },
       { property: 'og:url', content: `https://www.darksgym.com.br${this.router.url}` },
       { name: 'robots', content: 'index, follow' }
     ]);
   }
 
-  // 🧠 Structured Data para SEO local e resultados enriquecidos
-  private setStructuredData() {
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "HealthClub",
-      "name": "Dark's Gym - Espaço Premium",
-      "description": "Espaço premium com 2400m² de estrutura completa, climatização 24h, equipamentos de última geração e áreas funcionais.",
-      "image": "https://i.postimg.cc/d0px5SMj/Whats-App-Image-2025-03-06-at-15-39-11-2.jpg",
-      "@id": "https://www.darksgym.com.br/espaco-premium",
-      "url": "https://www.darksgym.com.br/espaco-premium",
-      "telephone": "+55-11-99999-9999",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Av. Martim Francisco, 786",
-        "addressLocality": "Santo André",
-        "addressRegion": "SP",
-        "postalCode": "09230-700",
-        "addressCountry": "BR"
-      },
-      "openingHours": "Mo-Su 00:00-23:59"
-    });
-    document.head.appendChild(script);
-  }
-
-  // 🎞️ Inicia o slideshow com acessibilidade
-  private initSlideshow() {
-    this.slides = Array.from(document.querySelectorAll('.image-slide')) as HTMLElement[];
-
-    this.slides.forEach((slide, index) => {
-      slide.style.opacity = index === 0 ? '1' : '0';
-      slide.setAttribute('role', 'img');
-      slide.setAttribute('aria-label', this.getSlideDescription(index));
-      slide.setAttribute('aria-hidden', index !== 0 ? 'true' : 'false');
-    });
-
-    this.startSlideshow();
-  }
-
-  private getSlideDescription(index: number): string {
-    const descriptions = [
-      'Área de musculação com equipamentos modernos',
-      'Sala de spinning com bicicletas profissionais',
-      'Área de crossfit com equipamentos diversificados',
-      'Vista geral da academia mostrando amplitude do espaço',
-      'Área de lutas com tatame profissional'
-    ];
-    return descriptions[index] || 'Imagem do espaço premium da academia';
-  }
-
-  private updateMetaForCurrentSlide() {
-    const currentImage = this.slides[this.currentSlide].style.backgroundImage
-      .replace('url("', '').replace('")', '');
-    this.meta.updateTag({ property: 'og:image', content: currentImage });
-  }
-
-  // 🎮 Controle de slides
-  startSlideshow() {
+  /**
+   * Inicia o slideshow automático com um intervalo de 5 segundos.
+   */
+  startSlideshow(): void {
     this.clearSlideshowInterval();
     this.slideshowInterval = setInterval(() => {
-      this.changeSlide();
+      this.currentSlide = (this.currentSlide + 1) % this.slidesData.length;
     }, 5000);
   }
 
-  clearSlideshowInterval() {
+  /**
+   * Limpa o intervalo para parar o slideshow.
+   */
+  clearSlideshowInterval(): void {
     if (this.slideshowInterval) {
       clearInterval(this.slideshowInterval);
     }
   }
 
-  changeSlide() {
-    this.slides[this.currentSlide].style.opacity = '0';
-    this.slides[this.currentSlide].setAttribute('aria-hidden', 'true');
-
-    this.currentSlide = (this.currentSlide + 1) % this.slides.length;
-
-    this.slides[this.currentSlide].style.opacity = '1';
-    this.slides[this.currentSlide].setAttribute('aria-hidden', 'false');
-
-    this.updateMetaForCurrentSlide();
-  }
-
-  // ⌨️ Navegação por teclado
-  handleKeydown(event: KeyboardEvent) {
-    if (event.key === 'ArrowLeft') {
-      this.prevSlide();
-    } else if (event.key === 'ArrowRight') {
-      this.nextSlide();
-    } else if (event.key === ' ') {
-      this.toggleSlideshow();
-    }
-  }
-
-  prevSlide() {
+  /**
+   * Navega para um slide específico ao clicar em um ponto.
+   * @param index O índice do slide para o qual navegar.
+   */
+  goToSlide(index: number): void {
+    this.currentSlide = index;
     this.clearSlideshowInterval();
-    this.slides[this.currentSlide].style.opacity = '0';
-    this.slides[this.currentSlide].setAttribute('aria-hidden', 'true');
-
-    this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
-
-    this.slides[this.currentSlide].style.opacity = '1';
-    this.slides[this.currentSlide].setAttribute('aria-hidden', 'false');
-
-    this.updateMetaForCurrentSlide();
     this.startSlideshow();
   }
 
-  nextSlide() {
+  /**
+   * Navega para o slide anterior.
+   */
+  prevSlide(): void {
+    this.currentSlide = (this.currentSlide - 1 + this.slidesData.length) % this.slidesData.length;
     this.clearSlideshowInterval();
-    this.changeSlide();
     this.startSlideshow();
   }
 
-  toggleSlideshow() {
-    if (this.slideshowInterval) {
-      this.clearSlideshowInterval();
-    } else {
-      this.startSlideshow();
-    }
+  /**
+   * Navega para o próximo slide.
+   */
+  nextSlide(): void {
+    this.currentSlide = (this.currentSlide + 1) % this.slidesData.length;
+    this.clearSlideshowInterval();
+    this.startSlideshow();
   }
 }

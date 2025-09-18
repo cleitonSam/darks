@@ -34,4 +34,62 @@
       </div>
     </div>
   </div>
+<section class="modern-gallery" aria-labelledby="modern-gallery-title">
+  <div class="container">
+    <div class="section-title">
+      <h2 id="modern-gallery-title">Galeria de Transformação</h2>
+      <p>Inspire-se com resultados reais e a beleza dos nossos produtos.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item" (click)="openModal('https://raw.githubusercontent.com/fluxodigitaltech/img-darks/refs/heads/main/2.png', 'Whey Protein Premium')">
+        <img src="https://raw.githubusercontent.com/fluxodigitaltech/img-darks/refs/heads/main/2.png" alt="Whey Protein Premium em uso" loading="lazy">
+        <div class="overlay">
+          <span class="view-text">Ver Detalhes</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" (click)="openModal('https://raw.githubusercontent.com/fluxodigitaltech/img-darks/refs/heads/main/3.png', 'Pré-Treino Explosivo')">
+        <img src="https://raw.githubusercontent.com/fluxodigitaltech/img-darks/refs/heads/main/3.png" alt="Atleta energizado com Pré-Treino" loading="lazy">
+        <div class="overlay">
+          <span class="view-text">Ver Detalhes</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" (click)="openModal('https://raw.githubusercontent.com/fluxodigitaltech/img-darks/refs/heads/main/4.png', 'Whey Protein')">
+        <img src="https://raw.githubusercontent.com/fluxodigitaltech/img-darks/refs/heads/main/4.png" alt="Whey Protein" loading="lazy">
+        <div class="overlay">
+          <span class="view-text">Ver Detalhes</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" (click)="openModal('https://raw.githubusercontent.com/fluxodigitaltech/img-darks/refs/heads/main/5.png', 'Whey Protein')">
+        <img src="https://raw.githubusercontent.com/fluxodigitaltech/img-darks/refs/heads/main/5.png" alt="Whey Protein" loading="lazy">
+        <div class="overlay">
+          <span class="view-text">Ver Detalhes</span>
+        </div>
+      </div>
+      <div class="gallery-item" (click)="openModal('https://raw.githubusercontent.com/fluxodigitaltech/img-darks/refs/heads/main/6.png', 'Creatina Pura')">
+        <img src="https://raw.githubusercontent.com/fluxodigitaltech/img-darks/refs/heads/main/6.png" alt="Creatina Pura" loading="lazy">
+        <div class="overlay">
+          <span class="view-text">Ver Detalhes</span>
+        </div>
+      </div>
+      <div class="gallery-item" (click)="openModal('https://raw.githubusercontent.com/fluxodigitaltech/img-darks/refs/heads/main/7.png', 'Pré-Treino Explosivo')">
+        <img src="https://raw.githubusercontent.com/fluxodigitaltech/img-darks/refs/heads/main/7.png" alt="Pré-Treino Explosivo" loading="lazy">
+        <div class="overlay">
+          <span class="view-text">Ver Detalhes</span>
+        </div>
+      </div>
+      </div>
+  </div>
+
+  <div class="image-modal" [class.active]="isModalOpen" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <span class="close-button" (click)="closeModal()">&times;</span>
+      <img [src]="currentImageSrc" [alt]="currentImageAlt">
+      <div class="modal-caption">{{ currentImageAlt }}</div>
+    </div>
+  </div>
+</section>
 </section>

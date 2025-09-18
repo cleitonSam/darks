@@ -8,17 +8,17 @@ import { take } from 'rxjs/operators';
 export class SlideshowService {
   private slides = [
     { 
-      image: 'https://raw.githubusercontent.com/fluxodigitaltech/img-darks/refs/heads/main/%40leafar_photographer-23.jpg',
+      image: 'https://raw.githubusercontent.com/fluxodigitaltech/img-darks/refs/heads/main/DSC01359.jpg',
       title: 'ELITE PERFORMANCE',
       description: 'Prepare-se para a inauguração da academia mais exclusiva da cidade. <span class="highlight">Mais de 2.400m²</span> de área premium dedicados ao seu alto desempenho.'
     },
     { 
-      image: 'https://raw.githubusercontent.com/fluxodigitaltech/img-darks/refs/heads/main/%40leafar_photographer-31.jpg',
+      image: 'https://raw.githubusercontent.com/fluxodigitaltech/img-darks/refs/heads/main/DSC01366.jpg',
       title: 'TREINAMENTO PERSONALIZADO',
       description: 'Métodos exclusivos adaptados às suas necessidades específicas para resultados extraordinários.'
     },
     { 
-      image: 'https://raw.githubusercontent.com/fluxodigitaltech/img-darks/refs/heads/main/%40leafar_photographer-37.jpg',
+      image: 'https://raw.githubusercontent.com/fluxodigitaltech/img-darks/refs/heads/main/DSC01437.jpg',
       title: 'COMUNIDADE ELITE',
       description: 'Junte-se a um grupo seleto de pessoas comprometidas com a excelência física e mental.'
     }
